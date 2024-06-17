@@ -41,8 +41,8 @@ public class UserLoginUsecase implements IUseCaseContract<UserLoginDTO, Response
         }
 
         UserModel brute = repo.findByAccess(dto.id, dto.senha);
-        if (brute.getNome() == null || brute.getPassword() == null) {
-            return utils.generateStandardResponse("Nenhum usuário encontrado", 404);
+        if (brute == null) {
+            return utils.generateStandardResponse("Id ou senha incorretos", 404);
         }
 
         UserLoginRES response = new UserLoginRES();
