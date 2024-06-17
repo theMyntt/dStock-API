@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
@@ -17,6 +18,7 @@ class StandardResponse {
     private int status;
 }
 
+@Service
 public class Utils {
     public ResponseEntity<StandardResponse> generateStandardResponse(String message, int status) {
         StandardResponse response = new StandardResponse();
