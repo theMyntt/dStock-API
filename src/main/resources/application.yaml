@@ -6,3 +6,7 @@ spring:
     url: jdbc:mysql://localhost:3306/dstock_db
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
