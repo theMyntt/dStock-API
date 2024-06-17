@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.ResponseEntity;
+
+import java.util.UUID;
 
 @Data
 @Builder
@@ -15,10 +18,15 @@ class StandardResponse {
 }
 
 public class Utils {
-    public StandardResponse generateStandardResponse(String message, int status) {
+    public ResponseEntity<StandardResponse> generateStandardResponse(String message, int status) {
         StandardResponse response = new StandardResponse();
         response.setMessage(message);
         response.setStatus(status);
-        return response;
+        return ResponseEntity.status(status).body(response);
+    }
+
+    public static String generateToken() {
+        String id = UUID.randomUUID().toString();
+        return id.replaceAll("-", "").substring(0, 15);
     }
 }
