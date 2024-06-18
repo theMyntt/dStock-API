@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 class StandardResponse {
-    private String message;
+    private String mensagem;
     private int status;
 }
 
@@ -22,7 +22,7 @@ class StandardResponse {
 public class Utils {
     public ResponseEntity<StandardResponse> generateStandardResponse(String message, int status) {
         StandardResponse response = new StandardResponse();
-        response.setMessage(message);
+        response.setMensagem(message);
         response.setStatus(status);
         return ResponseEntity.status(status).body(response);
     }
