@@ -36,11 +36,11 @@ public class UserLoginUsecase implements IUseCaseContract<UserLoginDTO, Response
 
     @Override
     public ResponseEntity<?> run(UserLoginDTO dto) {
-        if (dto.senha.isEmpty() || dto.id == 0) {
+        if (dto.getSenha() == null || dto.getId() == 0) {
             return utils.generateStandardResponse("Não podem existir campos nulos", 400);
         }
 
-        UserModel brute = repo.findByAccess(dto.id, dto.senha);
+        UserModel brute = repo.findByAccess(dto.getId(), dto.getSenha());
         if (brute == null) {
             return utils.generateStandardResponse("Id ou senha incorretos", 404);
         }
